@@ -29,10 +29,18 @@ jobs:
         with:
           channel: 'stable'
 
-      - name: Enable Web Support
+      - name: Cache Flutter dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.pub-cache
+          key: ${{ runner.os }}-pub-${{ hashFiles('**/pubspec.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-pub-
+
+      - name: Build Flutter Web
         run: |
           flutter pub get
-          flutter build web --base-href "/Flutter-Z/" --no-pub || true
+          flutter build web --base-href "/Flutter-Z/" --no-pub
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
