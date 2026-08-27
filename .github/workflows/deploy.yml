@@ -37,6 +37,8 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pub-
 
+      - run: flutter create . --platforms web
+
       - name: Build Flutter Web
         run: |
           flutter pub get
