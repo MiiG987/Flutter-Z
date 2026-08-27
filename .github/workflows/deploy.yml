@@ -19,11 +19,11 @@ jobs:
         with:
           channel: 'stable'
 
-      - name: Create Web Support and Build
-        run: |
-          flutter config --enable-web
-          flutter create . --platforms web
-          flutter build web --base-href "/Flutter-Z/"
+      - name: Get Dependencies
+        run: flutter pub get
+
+      - name: Build Web Application
+        run: flutter build web --base-href "/Flutter-Z/" --no-pub
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
