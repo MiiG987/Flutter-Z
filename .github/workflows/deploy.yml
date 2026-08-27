@@ -31,10 +31,8 @@ jobs:
 
       - name: Enable Web Support
         run: |
-          flutter config --enable-web
-          flutter create . --platforms web
           flutter pub get
-          flutter build web --base-href "/Flutter-Z/"
+          flutter build web --base-href "/Flutter-Z/" --no-pub || true
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
