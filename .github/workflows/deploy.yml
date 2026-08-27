@@ -32,7 +32,7 @@ jobs:
       - name: Enable Web Support
         run: |
           flutter config --enable-web
-          flutter create . --platforms web --force
+          flutter create . --platforms web
           flutter pub get
           flutter build web --base-href "/Flutter-Z/"
 
